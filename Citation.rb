@@ -8,29 +8,28 @@ class Citation
   java_import Java::edu.nyu.library.citation.Formats
 
   @item
-  @data
   
   def map(payload)
-    @data = payload
+    @item = Citation.map(payload)
     return self
   end
 
   def from(format)
     case format.downcase
     when "csf"
-      @item = Citation.new(@data, Formats::CSF)
+      @item = @item::from(Formats::CSF)
       return self
     when "pnx"
-      @item = Citation.new(@data, Formats::PNX)
+      @item = @item::from(Formats::PNX)
       return self
     when "bibtex"
-      @item = Citation.new(@data, Formats::BIBTEX)
+      @item = @item::from(Formats::BIBTEX)
       return self
     when "ris"
-      @item = Citation.new(@data, Formats::RIS)
+      @item = @item::from(Formats::RIS)
       return self
     when "openurl"
-      @item = Citation.new(@data, Formats::OPENURL)
+      @item = @item::from(Formats::OPENURL)
       return self
     else
       raise TypeError, 'Invalid format'
@@ -41,15 +40,15 @@ class Citation
   def to(format)
     case format.downcase
     when "csf"
-      return @item::output(Formats::CSF)
+      return @item::to(Formats::CSF)
     when "pnx"
-      return @item::output(Formats::PNX)
+      return @item::to(Formats::PNX)
     when "bibtex"
-      return @item::output(Formats::BIBTEX)
+      return @item::to(Formats::BIBTEX)
     when "ris"
-      return @item::output(Formats::RIS)
+      return @item::to(Formats::RIS)
     when "openurl"
-      return @item::output(Formats::OPENURL)
+      return @item::to(Formats::OPENURL)
     else
       raise TypeError, 'Invalid format'
     end
