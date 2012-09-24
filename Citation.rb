@@ -1,3 +1,4 @@
+#Citation class, used in builder form as Citation.new.map("some data").from("some format").to("some format")
 class Citation
   require 'java'
 
