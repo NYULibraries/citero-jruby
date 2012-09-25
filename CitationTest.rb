@@ -10,7 +10,7 @@ $OPENURL = "https://getit.library.nyu.edu/resolve?url_ver=Z39.88-2004&rft_val_fm
 $CSF_REGEX = /(^[.a-zA-Z0-9]+(\s*:\s*)[^\n]+$)+/
 $RIS_REGEX = /(^[\w\d]{1,6}  - [\w\W]*$|\s)+/
 $PNX_REGEX = /<[\w\W]*><[\w\s"]+>[\w\W]*<\/[\w\s]+>/
-$BIBTEX_REGEX = /@[^\{]+\{(?:[^\{\}]|\{[^\{\}]*\})*\}/
+$BIBTEX_REGEX = /@[^{]+{(?:[^{}]|{[^{}]*}|{{[^{}]*}})*}/
 $OPENURL_REGEX = /[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]*\?[&?[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+=[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+]+/
 
 class CSFTest < Test::Unit::TestCase
