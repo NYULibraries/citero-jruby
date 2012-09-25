@@ -9,49 +9,26 @@ class Citation
   java_import Java::edu.nyu.library.citation.Formats
 
   @item
-  
+
   def map(payload)
     @item = Citation.map(payload)
     return self
   end
 
   def from(format)
-    case format.downcase
-    when "csf"
-      @item = @item::from(Formats::CSF)
+    begin
+      @item = @item::from(Formats::valueOf(format.upcase))
       return self
-    when "pnx"
-      @item = @item::from(Formats::PNX)
-      return self
-    when "bibtex"
-      @item = @item::from(Formats::BIBTEX)
-      return self
-    when "ris"
-      @item = @item::from(Formats::RIS)
-      return self
-    when "openurl"
-      @item = @item::from(Formats::OPENURL)
-      return self
-    else
-      raise TypeError, 'Invalid format'
+    rescue Exception => e
+      $stderr.print e
     end
   end
-  
 
   def to(format)
-    case format.downcase
-    when "csf"
-      return @item::to(Formats::CSF)
-    when "pnx"
-      return @item::to(Formats::PNX)
-    when "bibtex"
-      return @item::to(Formats::BIBTEX)
-    when "ris"
-      return @item::to(Formats::RIS)
-    when "openurl"
-      return @item::to(Formats::OPENURL)
-    else
-      raise TypeError, 'Invalid format'
+    begin
+      return @item::to(Formats::valueOf(format.upcase))
+    rescue Exception => e
+      $stderr.print e
     end
   end
 end
