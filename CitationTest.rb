@@ -1,4 +1,4 @@
-require "citation"
+require "Citation"
 require "test/unit"
 
 $CSF = "itemType: book\nauthor: Alexander Dumas\ncontributor: D'Artagnan\ntitle: The Three Musketeers"
