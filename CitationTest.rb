@@ -125,11 +125,11 @@ end
 
 class CitationTest < Test::Unit::TestCase
   def test_testUnrecognizedFromFormat
-    assert_raise( TypeError ) { Citation.new.map().from("unknown") }
+    assert_raise( ArgumentError ) { Citation.new.map().from("unknown") }
   end
 
   def test_testUnrecognizedToFormat
-    assert_raise( TypeError ) { Citation.new.map().from("openurl").to("unkown") }
+    assert_raise( ArgumentError ) { Citation.new.map().from("openurl").to("unkown") }
   end
 
   def test_testUnmatchedData
@@ -137,10 +137,10 @@ class CitationTest < Test::Unit::TestCase
   end
 
   def test_missingFromFormat
-    assert_raise( TypeError ) { Citation.new.map().to("openurl") }
+    assert_raise( ArgumentError ) { Citation.new.map().to("openurl") }
   end
 
   def test_missingToFormat
-    assert_raise( TypeError ) { Citation.new.map().from("openurl").to("") }
+    assert_raise( ArgumentError ) { Citation.new.map().from("openurl").to("") }
   end
 end
