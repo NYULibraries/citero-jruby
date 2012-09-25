@@ -21,6 +21,7 @@ class Citation
       return self
     rescue Exception => e
       $stderr.print e
+      raise TypeError, 'Invalid Format'
     end
   end
 
@@ -29,6 +30,7 @@ class Citation
       return @item::to(Formats::valueOf(format.upcase))
     rescue Exception => e
       $stderr.print e
+      raise TypeError, 'Invalid Format'
     end
   end
 end
