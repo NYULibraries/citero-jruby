@@ -2,8 +2,8 @@
 class Citation
   require 'java'
 
-  Dir[ENV['CITATION'] + '/*.jar'].each {|f| require f}
-  Dir[ENV['M2_HOME'] + '/repository/**/*.jar'].each { |f| require f }
+  Dir[ENV['CITATION'] + '/**/*.jar'].each {|f| require f}
+  Dir[ENV['MAVEN'] + '/repository/**/*.jar'].each { |f| require f }
 
   java_import Java::EduNyuLibraryCitation::Citation
   java_import Java::edu.nyu.library.citation.Formats
