@@ -3,10 +3,13 @@ before_install:
     - git clone --depth=100 --quiet git://github.com/NYULibraries/maven-common.git NYULibraries/maven-common
     - cd NYULibraries/maven-common
     - mvn install
+    - cd ~/builds
+    - git clone --depth=100 --quiet git://github.com/NYULibraries/citation.git NYULibraries/citation
+    - cd NYULibraries/citation
+    - mvn install
     - cd ~/builds/NYULibraries/JRuby-Citation-Wrapper
-    - git submodule update --init --recursive
 rvm:
     - jruby-18mode
     - jruby-19mode
 env:
-    - CITATION=~/builds/NYULibraries/JRuby-Citation-Wrapper/citation MAVEN=/home/travis/.m2
+    - CITATION=/home/travis/.m2/repository/edu/nyu/library/citation MAVEN=/home/travis/.m2
