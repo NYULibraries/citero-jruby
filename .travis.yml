@@ -3,7 +3,7 @@ before_install:
     - git clone --depth=100 --quiet git://github.com/NYULibraries/maven-common.git NYULibraries/maven-common
     - cd NYULibraries/maven-common
     - mvn install
-    - cd cd ~/builds/NYULibraries/JRuby-Citation-Wrapper
+    - cd ~/builds/NYULibraries/JRuby-Citation-Wrapper
     - git submodule update --init --recursive
 rvm:
     - jruby-18mode
