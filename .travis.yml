@@ -4,7 +4,7 @@ before_install:
     - cd NYULibraries/maven-common
     - mvn install
     - cd ~/builds
-    - git clone --depth=100 --quiet git://github.com/NYULibraries/citation.git NYULibraries/citation
+    - git clone --depth=100 --quiet git://github.com/NYULibraries/citation.git -b development NYULibraries/citation
     - cd NYULibraries/citation
     - mvn install
     - cd ~/builds/NYULibraries/JRuby-Citation-Wrapper
