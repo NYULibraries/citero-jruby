@@ -3,10 +3,7 @@ before_install:
     - git clone --depth=100 --quiet git://github.com/NYULibraries/maven-common.git NYULibraries/maven-common
     - cd NYULibraries/maven-common
     - mvn install
-    - cd ~/builds/
-    - git clone --depth=100 --quiet git://github.com/NYULibraries/citation.git NYULibraries/citation
-    - cd NYULibraries/citation
-    - mvn install
+    - git submodule update --init --recursive
 rvm:
     - jruby-18mode
     - jruby-19mode
