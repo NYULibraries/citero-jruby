@@ -7,3 +7,5 @@ before_install:
 rvm:
     - jruby-18mode
     - jruby-19mode
+env:
+    - CITATION=~/builds/NYULibraries/JRuby-Citation-Wrapper/citation MAVEN=/home/travis/.m2
