@@ -1,1 +1,1 @@
-rvm use jruby --default
+rvm use jruby --1.9

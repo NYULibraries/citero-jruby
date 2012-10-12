@@ -1,3 +1,4 @@
+require 'rake'
 Gem::Specification.new do |s|
   s.name        = 'citation'
   s.version     = '0.0.0'
@@ -6,5 +7,5 @@ Gem::Specification.new do |s|
   s.description = "Leverages a Maven and a custom JAR and wraps it with JRuby"
   s.authors     = ["hab278"]
   s.email       = 'hab278@nyu.edu'
-  s.files       = ["lib/citation.rb"]
+  s.files       = FileList['lib/*.rb', 'lib/*.jar', 'test/*.rb'].to_a
 end

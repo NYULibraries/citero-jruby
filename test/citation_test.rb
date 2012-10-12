@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8
-require "Citation"
 require "test/unit"
+require "citation"
 
 $CSF = "itemType: book\nauthor: Alexander Dumas\ncontributor: D'Artagnan\ntitle: The Three Musketeers"
 $RIS = "TY  -  JOUR\nAU  -  Shannon,Claude E.\nER  -\n\n"
