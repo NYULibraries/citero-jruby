@@ -5,5 +5,5 @@ source "http://gems.rubyforge.org"
 source :gemcutter
 source "http://gemcutter.org"
 gem 'rake'
-gem 'test/unit'
+gem 'test-unit'
 gem 'jbundler'
