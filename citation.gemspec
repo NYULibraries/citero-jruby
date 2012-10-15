@@ -1,11 +1,14 @@
-require 'rake'
 Gem::Specification.new do |s|
   s.name        = 'citation'
   s.version     = '0.0.0'
+  s.platform    = Gem::Platform::RUBY
   s.date        = '2012-10-12'
   s.summary     = "Tool to translate between bibliographic formats."
   s.description = "Leverages a Maven and a custom JAR and wraps it with JRuby"
   s.authors     = ["hab278"]
   s.email       = 'hab278@nyu.edu'
-  s.files       = FileList['lib/*.rb', 'lib/*.jar', 'test/*.rb'].to_a
+  s.files       = Dir["{app,lib,config}/**/*"] + ["Rakefile", "Gemfile", "README.md", "Jarfile"]
+  s.add_dependency "rake"
+  s.add_dependency "test-unit"
+  s.add_dependency "jbundler"
 end
