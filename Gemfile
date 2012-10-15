@@ -4,6 +4,4 @@ source :rubyforge
 source "http://gems.rubyforge.org"
 source :gemcutter
 source "http://gemcutter.org"
-gem 'rake'
-gem 'test-unit'
-gem 'jbundler'
+gemspec
