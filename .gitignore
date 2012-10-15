@@ -1,3 +1,7 @@
 .rvmrc
 .jbundler
 *.lock
+.buildpath
+.DS_Store
+.gitignore
+.project
