@@ -1,2 +1,6 @@
 citation/
 rvm.env
+.buildpath
+.jbundler/
+.project
+.rvmrc
