@@ -4,3 +4,4 @@ rvm.env
 .jbundler/
 .project
 .rvmrc
+*.lock
