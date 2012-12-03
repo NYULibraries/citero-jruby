@@ -21,7 +21,7 @@ module Citation
       begin
         @citation = @citation::from(Formats::valueOf(format.upcase))
       rescue Exception => e
-        raise TypeError, "Mismatched data/format.#{format}"
+        raise TypeError, "Mismatched data for #{format}"
       end
       self
     end
