@@ -17,132 +17,132 @@ $OPENURL_REGEX = /[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]*\?[&?[:\/%$\-_\.\+!\*'\(\),a-
 
 class CSFTest < Test::Unit::TestCase
   def test_test_CSFinCSFOut
-    assert_match( $CSF_REGEX, Citation.new.map($CSF).from("csf").to("csf") )
+    assert_match( $CSF_REGEX, Citation.map($CSF).from_csf.to_csf )
   end
 
   def test_test_RISinCSFOut
-    assert_match( $CSF_REGEX, Citation.new.map($RIS).from("ris").to("csf") )
+    assert_match( $CSF_REGEX, Citation.map($RIS).from_ris.to_csf )
   end
 
   def test_PNXinCSFOut
-    assert_match( $CSF_REGEX, Citation.new.map($PNX).from("pnx").to("csf") )
+    assert_match( $CSF_REGEX, Citation.map($PNX).from_pnx.to_csf )
   end
 
   def test_BIBTEXinCSFOut
-    assert_match( $CSF_REGEX, Citation.new.map($BIBTEX).from("bibtex").to("csf") )
+    assert_match( $CSF_REGEX, Citation.map($BIBTEX).from_bibtex.to_csf )
   end
 
   def test_OPENURLinCSFOut
-    assert_match( $CSF_REGEX, Citation.new.map($OPENURL).from("openurl").to("csf") )
+    assert_match( $CSF_REGEX, Citation.map($OPENURL).from_openurl.to_csf )
   end
 end
 
 class RISTest < Test::Unit::TestCase
   def test_CSFinRISOut
-    assert_match( $RIS_REGEX, Citation.new.map($CSF).from("csf").to("ris") )
+    assert_match( $RIS_REGEX, Citation.map($CSF).from_csf.to_ris )
   end
 
   def test_RISinRISOut
-    assert_match( $RIS_REGEX, Citation.new.map($RIS).from("ris").to("ris") )
+    assert_match( $RIS_REGEX, Citation.map($RIS).from_ris.to_ris )
   end
 
   def test_PNXinRISOut
-    assert_match( $RIS_REGEX, Citation.new.map($PNX).from("pnx").to("ris") )
+    assert_match( $RIS_REGEX, Citation.map($PNX).from_pnx.to_ris )
   end
 
   def test_BIBTEXinRISOut
-    assert_match( $RIS_REGEX, Citation.new.map($BIBTEX).from("bibtex").to("ris") )
+    assert_match( $RIS_REGEX, Citation.map($BIBTEX).from_bibtex.to_ris )
   end
 
   def test_OPENURLinRISOut
-    assert_match( $RIS_REGEX, Citation.new.map($OPENURL).from("openurl").to("ris") )
+    assert_match( $RIS_REGEX, Citation.map($OPENURL).from_openurl.to_ris )
   end
 end
 
 class PNXTest < Test::Unit::TestCase
   def test_CSFinPNXOut
-    assert_match( $PNX_REGEX, Citation.new.map($CSF).from("csf").to("pnx") )
+    assert_match( $PNX_REGEX, Citation.map($CSF).from_csf.to_pnx )
   end
 
   def test_RISinPNXOut
-    assert_match( $PNX_REGEX, Citation.new.map($RIS).from("ris").to("pnx") )
+    assert_match( $PNX_REGEX, Citation.map($RIS).from_ris.to_pnx )
   end
 
   def test_PNXinPNXOut
-    assert_match( $PNX_REGEX, Citation.new.map($PNX).from("pnx").to("pnx") )
+    assert_match( $PNX_REGEX, Citation.map($PNX).from_pnx.to_pnx )
   end
 
   def test_BIBTEXinPNXOut
-    assert_match( $PNX_REGEX, Citation.new.map($BIBTEX).from("bibtex").to("pnx") )
+    assert_match( $PNX_REGEX, Citation.map($BIBTEX).from_bibtex.to_pnx )
   end
 
   def test_OPENURLinPNXOut
-    assert_match( $PNX_REGEX, Citation.new.map($OPENURL).from("openurl").to("pnx") )
+    assert_match( $PNX_REGEX, Citation.map($OPENURL).from_openurl.to_pnx )
   end
 end
 
 class BIBTEXTest < Test::Unit::TestCase
   def test_CSFinBIBTEXOut
-    assert_match( $BIBTEX_REGEX, Citation.new.map($CSF).from("csf").to("bibtex") )
+    assert_match( $BIBTEX_REGEX, Citation.map($CSF).from_csf.to_bibtex )
   end
 
   def test_RISinBIBTEXOut
-    assert_match( $BIBTEX_REGEX, Citation.new.map($RIS).from("ris").to("bibtex") )
+    assert_match( $BIBTEX_REGEX, Citation.map($RIS).from_ris.to_bibtex )
   end
 
   def test_PNXinBIBTEXOut
-    assert_match( $BIBTEX_REGEX, Citation.new.map($PNX).from("pnx").to("bibtex") )
+    assert_match( $BIBTEX_REGEX, Citation.map($PNX).from_pnx.to_bibtex )
   end
 
   def test_BIBTEXinBIBTEXOut
-    assert_match( $BIBTEX_REGEX, Citation.new.map($BIBTEX).from("bibtex").to("bibtex") )
+    assert_match( $BIBTEX_REGEX, Citation.map($BIBTEX).from_bibtex.to_bibtex )
   end
 
   def test_OPENURLinBIBTEXOut
-    assert_match( $BIBTEX_REGEX, Citation.new.map($OPENURL).from("openurl").to("bibtex") )
+    assert_match( $BIBTEX_REGEX, Citation.map($OPENURL).from_openurl.to_bibtex )
   end
 end
 
 class OPENURLTest < Test::Unit::TestCase
   def test_CSFinOPENURLOut
-    assert_match( $OPENURL_REGEX, Citation.new.map($CSF).from("csf").to("openurl") )
+    assert_match( $OPENURL_REGEX, Citation.map($CSF).from_csf.to_openurl )
   end
 
   def test_RISinOPENURLOut
-    assert_match( $OPENURL_REGEX, Citation.new.map($RIS).from("ris").to("openurl") )
+    assert_match( $OPENURL_REGEX, Citation.map($RIS).from_ris.to_openurl )
   end
 
   def test_PNXinOPENURLOut
-    assert_match( $OPENURL_REGEX, Citation.new.map($PNX).from("pnx").to("openurl") )
+    assert_match( $OPENURL_REGEX, Citation.map($PNX).from_pnx.to_openurl )
   end
 
   def test_BIBTEXinOPENURLOut
-    assert_match( $OPENURL_REGEX, Citation.new.map($BIBTEX).from("bibtex").to("openurl") )
+    assert_match( $OPENURL_REGEX, Citation.map($BIBTEX).from_bibtex.to_openurl )
   end
 
   def test_OPENURLinOPENURLOut
-    assert_match( $OPENURL_REGEX, Citation.new.map($OPENURL).from("openurl").to("openurl") )
+    assert_match( $OPENURL_REGEX, Citation.map($OPENURL).from_openurl.to_openurl )
   end
 end
 
 class CitationTest < Test::Unit::TestCase
   def test_testUnrecognizedFromFormat
-    assert_raise( ArgumentError ) { Citation.new.map().from("unknown") }
+    assert_raise( ArgumentError ) { Citation.map().from("unknown") }
   end
 
   def test_testUnrecognizedToFormat
-    assert_raise( ArgumentError ) { Citation.new.map().from("openurl").to("unkown") }
+    assert_raise( ArgumentError ) { Citation.map().from_openurl.to("unkown") }
   end
 
   def test_testUnmatchedData
-    assert_raise( TypeError ) { Citation.new.map("").from("openurl").to("openurl") }
+    assert_raise( TypeError ) { Citation.map("").from_openurl.to_openurl }
   end
 
   def test_missingFromFormat
-    assert_raise( ArgumentError ) { Citation.new.map().to("openurl") }
+    assert_raise( ArgumentError ) { Citation.map().to_openurl }
   end
 
   def test_missingToFormat
-    assert_raise( ArgumentError ) { Citation.new.map().from("openurl").to("") }
+    assert_raise( ArgumentError ) { Citation.map().from_openurl.to("") }
   end
 end
