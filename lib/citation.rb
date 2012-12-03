@@ -25,15 +25,17 @@ module Citation
       end
       self
     end
+    private :from
     
     def to format
       @citation::to(Formats::valueOf(format.upcase))
     end
+    private :to
     
     def method_missing(method, *args, &block)
-      if(formats.include? method.to_s)
+      if(formats.include? formatize( method ))
         self.class.send(:define_method, method) do
-          eval(find_method (method.to_s.include?("from_") ? "from" : "to"), method.to_s)
+          send directionize(method).to_sym, formatize(method)
         end
         send method, *args, &block
       else
@@ -41,17 +43,18 @@ module Citation
       end
     end
     
-    def find_method direction, name
-      "#{direction} \"#{name.sub("#{direction}_",'')}\""
+    def directionize method
+      method.to_s.split( "_", 2).first
     end
+    private :directionize
+    
+    def formatize method
+      method.to_s.split( "_", 2).last
+    end
+    private :formatize
     
     def formats
-      @formats ||= Formats::values.collect do |format|
-          "from_#{format.name.downcase}"
-      end +
-      Formats::values.collect do |format|
-          "to_#{format.name.downcase}"
-      end
+      @formats ||= Formats::values.collect {|format| format.name.downcase}
     end
   end
 end

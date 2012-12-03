@@ -127,11 +127,11 @@ end
 
 class CitationTest < Test::Unit::TestCase
   def test_testUnrecognizedFromFormat
-    assert_raise( ArgumentError ) { Citation.map().from("unknown") }
+    assert_raise( NoMethodError ) { Citation.map("").from_unknown }
   end
 
   def test_testUnrecognizedToFormat
-    assert_raise( ArgumentError ) { Citation.map().from_openurl.to("unkown") }
+    assert_raise( NoMethodError ) { Citation.map($OPENURL).from_openurl.to_unknown }
   end
 
   def test_testUnmatchedData
@@ -139,10 +139,17 @@ class CitationTest < Test::Unit::TestCase
   end
 
   def test_missingFromFormat
-    assert_raise( ArgumentError ) { Citation.map().to_openurl }
+    #assert_raise( ArgumentError ) { Citation.map("").to_openurl }
+    p Citation.map("itemType: book").to_csf
+    p Citation.map("itemType: book").to_ris
+    p Citation.map("itemType: book").to_openurl
+    p Citation.map("itemType: book").to_bibtex
+    p Citation.map("itemType: book").to_pnx
+    
+    
   end
 
   def test_missingToFormat
-    assert_raise( ArgumentError ) { Citation.map().from_openurl.to("") }
+    assert_raise( NoMethodError ) { Citation.map($OPENURL).from_openurl.to }
   end
 end
