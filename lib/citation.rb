@@ -33,7 +33,7 @@ module Citation
     private :to
     
     def method_missing(method, *args, &block)
-      if(formats.include? formatize( method ))
+      if(matches? method)
         self.class.send(:define_method, method) do
           send directionize(method).to_sym, formatize(method)
         end
@@ -42,6 +42,19 @@ module Citation
         super
       end
     end
+    
+    def respond_to? method, include_private=false
+      if(matches? method)
+        return true
+      else
+        super
+      end
+    end
+    
+    def matches? method
+      formats.include? formatize(method) and directions.include? directionize(method)
+    end
+    private :matches?
     
     def directionize method
       method.to_s.split( "_", 2).first
@@ -55,6 +68,10 @@ module Citation
     
     def formats
       @formats ||= Formats::values.collect {|format| format.name.downcase}
+    end
+    
+    def directions
+      @directions ||= ["to", "from"]
     end
   end
 end
