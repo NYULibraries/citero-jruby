@@ -28,7 +28,11 @@ module Citation
     private :from
     
     def to format
-      @citation::to(Formats::valueOf(format.upcase))
+      begin
+        @citation::to(Formats::valueOf(format.upcase))
+      rescue Exception => e
+        raise ArgumentError, "Missing a source format. Use from_[format] first."
+      end
     end
     private :to
     

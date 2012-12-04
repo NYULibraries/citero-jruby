@@ -138,11 +138,11 @@ class CitationTest < Test::Unit::TestCase
       assert_raise( TypeError ) { Citation.map("").from_openurl.to_openurl }
     end
 
-  def test_missingFromFormat
-    assert_raise( ArgumentError ) { Citation.map("").to_openurl }
-  end
-
-  def test_missingToFormat
-    assert_raise( NoMethodError ) { Citation.map($OPENURL).from_openurl.to }
-  end
+    def test_missingFromFormat
+      assert_raise( ArgumentError ) { Citation.map("").to_openurl }
+    end
+    
+    def test_missingToFormat
+      assert_raise( NoMethodError ) { Citation.map($OPENURL).from_openurl.to }
+    end
 end
