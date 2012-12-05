@@ -96,14 +96,14 @@ module Citation
     private :matches?
     
     # Splits the method to get its direction, or method ie to and from.
-    def directionize method
-      method.to_s.split( "_", 2).first
+    def directionize method, delimiter="_"
+      method.to_s.split(delimiter, 2).first
     end
     private :directionize
     
     # Splits the method to get its format, or parameter ie csf or ris.
-    def formatize method
-      method.to_s.split( "_", 2).last
+    def formatize method, delimiter="_"
+      method.to_s.split(delimiter, 2).last
     end
     private :formatize
     
