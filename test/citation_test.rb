@@ -47,7 +47,7 @@ class CSFTest < Test::Unit::TestCase
     end
   
     def test_PNXinRISOut
-      assert_match( $RIS_REGEX, Citation.map($PNX).from_pnx.to_ris )
+      assert_match( $RIS_REGEX, Citation.map($PNX).pnx_to_ris )
     end
   
     def test_BIBTEXinRISOut
@@ -117,7 +117,7 @@ class CSFTest < Test::Unit::TestCase
     end
   
     def test_BIBTEXinOPENURLOut
-      assert_match( $OPENURL_REGEX, Citation.map($BIBTEX).from_bibtex.to_openurl )
+      assert_match( $OPENURL_REGEX, Citation.map($BIBTEX).from_bibtex_to_openurl )
     end
   
     def test_OPENURLinOPENURLOut

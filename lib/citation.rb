@@ -53,10 +53,17 @@ module Citation
       #rescue any exceptions, if the error is not caught in JAR, most likely a 
       #problem with the source format
       rescue Exception => e
-        raise ArgumentError, "Missing a source format. Use from_[format] first."
+        raise ArgumentError, " #{format}"
       end
     end
     private :to
+    
+    def fromto source, out
+      from source
+      to out
+    end
+    private :fromto
+    
     
     # The method_missing override checks to see if the called method
     # can be evaluated to a method name and parameter, then stores it
@@ -70,6 +77,12 @@ module Citation
           # Splits the method and parameter. See formatize and directionize
           send directionize(method).to_sym, formatize(method)
         end
+          # calls the method
+          send method, *args, &block
+      elsif(method.to_s =~ /_to_/)
+        self.class.send(:define_method, method) do
+          send :fromto, $`.include?('from_') ? $`.tap{|s| s.slice!("from_")} : $`, $'
+        end
         # calls the method
         send method, *args, &block
       else
@@ -80,7 +93,7 @@ module Citation
     # Returns true if the method can be evaluated to a method name
     # and parameter.
     def respond_to? method, include_private=false
-      if(matches? method)
+      if(matches? method or method.to_s =~ /_to_/)
         return true
       else
         super
@@ -96,14 +109,14 @@ module Citation
     private :matches?
     
     # Splits the method to get its direction, or method ie to and from.
-    def directionize method
-      method.to_s.split( "_", 2).first
+    def directionize method, delimiter='_'
+      method.to_s.split(delimiter, 2).first
     end
     private :directionize
     
     # Splits the method to get its format, or parameter ie csf or ris.
-    def formatize method
-      method.to_s.split( "_", 2).last
+    def formatize method, delimiter='_'
+      method.to_s.split(delimiter, 2).last
     end
     private :formatize
     
