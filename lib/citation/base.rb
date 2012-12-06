@@ -2,7 +2,7 @@
 module Citation
   # Java is required in this module.
   require 'java'
-  require 'bin/citation.jar'
+  require 'citation/citation.jar'
 
   # Calling the map method creates a new instance of the Base class, with splatter operator passed in
   def self.map *args
