@@ -1,0 +1,6 @@
+rvm.env
+.buildpath
+.jbundler/
+.project
+.rvmrc
+*.lock
