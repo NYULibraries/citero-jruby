@@ -61,7 +61,7 @@ class CSFTest < Test::Unit::TestCase
   
   class PNXTest < Test::Unit::TestCase
     def test_CSFinPNXOut
-      assert_raise( ArgumentError ){ Citero.map($CSF).from_csf.to_pnx }
+      assert_raise( ArgumentError ){  Citero.map($CSF).from_csf.to_pnx }
     end
   
     def test_RISinPNXOut
