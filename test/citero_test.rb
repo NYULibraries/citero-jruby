@@ -61,23 +61,23 @@ class CSFTest < Test::Unit::TestCase
   
   class PNXTest < Test::Unit::TestCase
     def test_CSFinPNXOut
-      assert_match( $PNX_REGEX, Citero.map($CSF).from_csf.to_pnx )
+      assert_raise( ArgumentError ){ Citero.map($CSF).from_csf.to_pnx }
     end
   
     def test_RISinPNXOut
-      assert_match( $PNX_REGEX, Citero.map($RIS).from_ris.to_pnx )
+      assert_raise( ArgumentError ){  Citero.map($RIS).from_ris.to_pnx }
     end
   
     def test_PNXinPNXOut
-      assert_match( $PNX_REGEX, Citero.map($PNX).from_pnx.to_pnx )
+      assert_raise( ArgumentError ){  Citero.map($PNX).from_pnx.to_pnx }
     end
   
     def test_BIBTEXinPNXOut
-      assert_match( $PNX_REGEX, Citero.map($BIBTEX).from_bibtex.to_pnx )
+      assert_raise( ArgumentError ){  Citero.map($BIBTEX).from_bibtex.to_pnx }
     end
   
     def test_OPENURLinPNXOut
-      assert_match( $PNX_REGEX, Citero.map($OPENURL).from_openurl.to_pnx )
+      assert_raise( ArgumentError ){  Citero.map($OPENURL).from_openurl.to_pnx }
     end
   end
   
