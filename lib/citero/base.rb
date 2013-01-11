@@ -91,7 +91,7 @@ module Citero
     # that can accept the formats, and checks to see if the formats are in a list
     # of formats as defined by the Java enum Format.
     def matches? method
-      formats.include? formatize(method) and directions.include? directionize(method)
+      directions.include? directionize(method) and method("#{directionize(method)}_formats").call.include? formatize(method)
     end
     private :matches?
     
@@ -107,15 +107,17 @@ module Citero
     end
     private :formatize
     
-    # Extracts list of formats from the java enum Format.
-    def formats
-      # Downcase the formats for ruby
-      @formats ||= Formats::values.collect {|format| format.name.downcase}
-    end
-    
     # List of available directions or methods.
     def directions
       @directions ||= ["to", "from"]
+    end
+    
+    def to_formats
+      @to_formats ||= Formats::values.select {|format| format.isDestinationFormat }.collect {|format| format.name.downcase}
+    end
+    
+    def from_formats
+      @from_formats ||= Formats::values.select {|format| format.isSourceFormat }.collect {|format| format.name.downcase}
     end
   end
 end

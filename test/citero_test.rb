@@ -126,7 +126,7 @@ class CSFTest < Test::Unit::TestCase
 end
 
 class CiteroTest < Test::Unit::TestCase
-  def test_testUnrecognizedFromFormat
+    def test_testUnrecognizedFromFormat
       assert_raise( NoMethodError ) { Citero.map("").from_unknown }
     end
   
@@ -144,5 +144,9 @@ class CiteroTest < Test::Unit::TestCase
     
     def test_missingToFormat
       assert_raise( NoMethodError ) { Citero.map($OPENURL).from_openurl.to }
+    end
+    
+    def test_sourceFormats
+      assert_raise( NoMethodError ) { Citero.map("").to_formats }
     end
 end
