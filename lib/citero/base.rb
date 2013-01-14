@@ -111,6 +111,7 @@ module Citero
     def directions
       @directions ||= ["to", "from"]
     end
+    private :directions
     
     def to_formats
       @to_formats ||= Formats::values.select {|format| format.isDestinationFormat }.collect {|format| format.name.downcase}

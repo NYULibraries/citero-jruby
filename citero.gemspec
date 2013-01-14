@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
   s.add_dependency "simplecov"
   s.add_dependency "simplecov-rcov"
   s.add_dependency "git"
+  s.add_dependency "bundler"
 end
