@@ -195,13 +195,13 @@ Returns itself for builder patttern.</p>
 
           <div class="method-description">
             
-            
+            <p>List of available formats <a href="../Citero.html">Citero</a> exports to.</p>
             
 
             
             <div class="method-source-code" id="from_formats-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 120</span>
+<span class="ruby-comment"># File lib/citero/base.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">from_formats</span>
   <span class="ruby-ivar">@from_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Formats</span><span class="ruby-operator">::</span><span class="ruby-identifier">values</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">isSourceFormat</span> }.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>}
 <span class="ruby-keyword">end</span></pre>
@@ -312,13 +312,13 @@ from_pnx. pnx_to will not work.</p>
 
           <div class="method-description">
             
-            
+            <p>List of available formats <a href="../Citero.html">Citero</a> exports to.</p>
             
 
             
             <div class="method-source-code" id="to_formats-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 116</span>
+<span class="ruby-comment"># File lib/citero/base.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_formats</span>
   <span class="ruby-ivar">@to_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Formats</span><span class="ruby-operator">::</span><span class="ruby-identifier">values</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">isDestinationFormat</span> }.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>}
 <span class="ruby-keyword">end</span></pre>
