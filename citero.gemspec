@@ -15,4 +15,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rake", "0.9.2.2"
   s.add_dependency "test-unit"
   s.add_dependency "jbundler"
+  s.add_dependency "simplecov"
+  s.add_dependency "simplecov-rcov"
+  s.add_dependency "git"
 end
