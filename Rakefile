@@ -32,8 +32,6 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
-
-
 desc "Push latest rdoc and rdocs to gh-pages"
 task :ghpages do
   g = Git.open(Dir.pwd)
