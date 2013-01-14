@@ -113,10 +113,12 @@ module Citero
     end
     private :directions
     
+    # List of available formats Citero exports to.
     def to_formats
       @to_formats ||= Formats::values.select {|format| format.isDestinationFormat }.collect {|format| format.name.downcase}
     end
     
+    # List of available formats Citero exports to.
     def from_formats
       @from_formats ||= Formats::values.select {|format| format.isSourceFormat }.collect {|format| format.name.downcase}
     end
