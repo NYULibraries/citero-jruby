@@ -1,6 +1,6 @@
-JRuby-Citation-Wrapper
+citero-gem
 ======================
-[![Build Status](https://secure.travis-ci.org/NYULibraries/JRuby-Citation-Wrapper.png)](http://travis-ci.org/NYULibraries/JRuby-Citation-Wrapper)
+[![Build Status](https://secure.travis-ci.org/NYULibraries/citero-gem.png)](http://travis-ci.org/NYULibraries/citero-gem.)
 
 
-A JRuby wrapper for the Citation tool, enables use of the citation tool in JRuby
+A JRuby wrapper for the Citero, enables use of the Citero in JRuby
