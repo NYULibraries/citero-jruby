@@ -1,0 +1,1 @@
+jar 'edu.nyu.library:citation', '1.0.0'
