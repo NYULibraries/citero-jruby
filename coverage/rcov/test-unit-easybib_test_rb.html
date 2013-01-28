@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>test/unit/csf_test.rb</title>
+    <title>test/unit/easybib_test.rb</title>
     <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Workspace C0 Coverage Information - Simploco - RCov</h1>
-    <h2>test/unit/csf_test.rb</h2>
+    <h2>test/unit/easybib_test.rb</h2>
 
     <div class="report_table_wrapper">
       <table class='report' id='report_table'>
@@ -24,7 +24,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="test-unit-csf_test_rb.html">test/unit/csf_test.rb</a></td>
+            <td class="left_align"><a href="test-unit-easybib_test_rb.html">test/unit/easybib_test.rb</a></td>
             <td class='right_align'><tt>23</tt></td>
             <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
@@ -54,64 +54,64 @@
           <td><pre><a name="line2">2</a> require &quot;test_helper&quot;</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line3">3</a> </pre></td>
+          <td><pre><a name="line3">3</a>   </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line4">4</a> class CSFTest &lt; Test::Unit::TestCase</pre></td>
+          <td><pre><a name="line4">4</a> class EASYBIBTest &lt; Test::Unit::TestCase</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line5">5</a>   def test_CSFinCSFOut</pre></td>
+          <td><pre><a name="line5">5</a>   def test_CSFinEASYBIBOut</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line6">6</a>     assert_match( $CSF_REGEX, Citero.map($CSF).from_csf.to_csf )</pre></td>
+          <td><pre><a name="line6">6</a>     assert_true( is_valid_json? Citero.map($CSF).from_csf.to_easybib )</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line7">7</a>   end</pre></td>
+          <td><pre><a name="line7">7</a>   end                                  </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line8">8</a> </pre></td>
+          <td><pre><a name="line8">8</a>                                        </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line9">9</a>   def test_test_RISinCSFOut</pre></td>
+          <td><pre><a name="line9">9</a>   def test_RISinEASYBIBOut              </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line10">10</a>     assert_match( $CSF_REGEX, Citero.map($RIS).from_ris.to_csf )</pre></td>
+          <td><pre><a name="line10">10</a>     assert_true( is_valid_json? Citero.map($RIS).from_ris.to_easybib )</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line11">11</a>   end</pre></td>
+          <td><pre><a name="line11">11</a>   end                                  </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line12">12</a> </pre></td>
+          <td><pre><a name="line12">12</a>                                        </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line13">13</a>   def test_PNXinCSFOut</pre></td>
+          <td><pre><a name="line13">13</a>   def test_PNXinEASYBIBOut              </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line14">14</a>     assert_match( $CSF_REGEX, Citero.map($PNX).from_pnx.to_csf )</pre></td>
+          <td><pre><a name="line14">14</a>     assert_true( is_valid_json? Citero.map($PNX).from_pnx.to_easybib )</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line15">15</a>   end</pre></td>
+          <td><pre><a name="line15">15</a>   end                                  </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line16">16</a> </pre></td>
+          <td><pre><a name="line16">16</a>                                        </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line17">17</a>   def test_BIBTEXinCSFOut</pre></td>
+          <td><pre><a name="line17">17</a>   def test_BIBTEXinEASYBIBOut           </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line18">18</a>     assert_match( $CSF_REGEX, Citero.map($BIBTEX).from_bibtex.to_csf )</pre></td>
+          <td><pre><a name="line18">18</a>     assert_true( is_valid_json? Citero.map($BIBTEX).from_bibtex.to_easybib )</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line19">19</a>   end</pre></td>
+          <td><pre><a name="line19">19</a>   end                                  </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line20">20</a> </pre></td>
+          <td><pre><a name="line20">20</a>                                        </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line21">21</a>   def test_OPENURLinCSFOut</pre></td>
+          <td><pre><a name="line21">21</a>   def test_OPENURLinEASYBIBOut          </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line22">22</a>     assert_match( $CSF_REGEX, Citero.map($OPENURL).from_openurl.to_csf )</pre></td>
+          <td><pre><a name="line22">22</a>     assert_true( is_valid_json? Citero.map($OPENURL).from_openurl.to_easybib )</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line23">23</a>   end</pre></td>
