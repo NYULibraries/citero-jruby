@@ -4,6 +4,7 @@ require "test/unit"
 require "citero"
 require 'simplecov'
 require 'simplecov-rcov'
+require 'json'
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start
 
@@ -18,3 +19,10 @@ $RIS_REGEX = /(^[\w\d]{1,6}  - [\w\W]*$|\s)+/
 $PNX_REGEX = /<[\w\W]*><[\w\s"]+>[\w\W]*<\/[\w\s]+>/
 $BIBTEX_REGEX = /@[^{]+{(?:[^{}]|{[^{}]*}|{{[^{}]*}})*}/
 $OPENURL_REGEX = /[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]*\?[&?[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+=[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+]+/
+
+def is_valid_json? json
+  JSON.parse(json)
+  return true
+rescue JSON::ParserError
+  return false
+end

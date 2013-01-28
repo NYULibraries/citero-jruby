@@ -1,11 +1,11 @@
 require "test_helper"
 
 class CiteroTest < Test::Unit::TestCase
-  def test_testUnrecognizedFromFormat
+  def test_UnrecognizedFromFormat
     assert_raise( NoMethodError ) { Citero.map("").from_unknown }
   end
 
-  def test_testUnrecognizedToFormat
+  def test_UnrecognizedToFormat
     assert_raise( NoMethodError ) { Citero.map($OPENURL).from_openurl.to_unknown }
   end
 

@@ -1,7 +1,7 @@
 require "test_helper"
 
 class CSFTest < Test::Unit::TestCase
-  def test_test_CSFinCSFOut
+  def test_CSFinCSFOut
     assert_match( $CSF_REGEX, Citero.map($CSF).from_csf.to_csf )
   end
 
