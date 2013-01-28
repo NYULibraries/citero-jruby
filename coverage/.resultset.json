@@ -120,6 +120,29 @@
         1,
         1
       ],
+      "/Users/hannan/Documents/workspace/JRuby-Citation-Wrapper/test/unit/easybib_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1
+      ],
       "/Users/hannan/Documents/workspace/JRuby-Citation-Wrapper/test/unit/bibtex_test.rb": [
         1,
         null,
@@ -144,6 +167,6 @@
         1
       ]
     },
-    "timestamp": 1358200694
+    "timestamp": 1359397279
   }
 }

@@ -4,23 +4,35 @@ module Citero
   require 'java'
   require 'citero/citero.jar'
 
+  java_import Java::EduNyuLibraryCitero::Formats
+
   # Calling the map method creates a new instance of the Base class, with splatter operator passed in
   def self.map *args
     Base.new *args
+  end
+
+  # List of available formats Citero exports to as a module class method for quick checks.
+  def self.to_formats
+    @to_formats ||= Formats::values.select {|format| format.isDestinationFormat }.collect {|format| format.name.downcase}
+  end
+  
+  # List of available formats Citero exports from as a module class method for quick checks.
+  def self.from_formats
+    @from_formats ||= Formats::values.select {|format| format.isSourceFormat }.collect {|format| format.name.downcase}
   end
   
   # The Base class is the true wrapper for citation
   class Base
     
     # Import of important java files.
-    java_import Java::EduNyuLibraryCitero::Citero
-    java_import Java::EduNyuLibraryCitero::Formats
+    JavaCitero = Java::EduNyuLibraryCitero::Citero
+    
     
     # The constructor, takes input data taken from the parent module
     # and creates an instance of the Citero java object. 
     # Returns itself for builder patttern.
     def initialize data
-      @citero = Citero::map(data)
+      @citero = JavaCitero::map(data)
       self
     end
     
@@ -62,16 +74,16 @@ module Citero
     # can be evaluated to a method name and parameter, then stores it
     # and calls it if it can.
     # For example, to_csf or from_pnx. pnx_to will not work.
-    def method_missing(method, *args, &block)
+    def method_missing(meth, *args, &block)
       # Check to see if it can be evaluated
-      if(matches? method)
+      if(matches? meth)
         #Defines the method and caches it to the class
-        self.class.send(:define_method, method) do
+        self.class.send(:define_method, meth) do
           # Splits the method and parameter. See formatize and directionize
-          send directionize(method).to_sym, formatize(method)
+          send directionize(meth).to_sym, formatize(meth)
         end
         # calls the method
-        send method, *args, &block
+        send meth, *args, &block
       else
         super
       end
@@ -79,8 +91,8 @@ module Citero
     
     # Returns true if the method can be evaluated to a method name
     # and parameter.
-    def respond_to? method, include_private=false
-      if(matches? method)
+    def respond_to? meth, include_private=false
+      if(matches? meth)
         return true
       else
         super
@@ -90,20 +102,20 @@ module Citero
     # Private method. Checks to see if the method name is in the list of methods
     # that can accept the formats, and checks to see if the formats are in a list
     # of formats as defined by the Java enum Format.
-    def matches? method
-      directions.include? directionize(method) and method("#{directionize(method)}_formats").call.include? formatize(method)
+    def matches? meth
+      directions.include? directionize(meth) and method("#{directionize(meth)}_formats").call.include? formatize(meth)
     end
     private :matches?
     
     # Splits the method to get its direction, or method ie to and from.
-    def directionize method, delimiter="_"
-      method.to_s.split(delimiter, 2).first
+    def directionize meth, delimiter="_"
+      meth.to_s.split(delimiter, 2).first
     end
     private :directionize
     
     # Splits the method to get its format, or parameter ie csf or ris.
-    def formatize method, delimiter="_"
-      method.to_s.split(delimiter, 2).last
+    def formatize meth, delimiter="_"
+      meth.to_s.split(delimiter, 2).last
     end
     private :formatize
     
@@ -115,12 +127,12 @@ module Citero
     
     # List of available formats Citero exports to.
     def to_formats
-      @to_formats ||= Formats::values.select {|format| format.isDestinationFormat }.collect {|format| format.name.downcase}
+      @to_formats ||= Citero.to_formats
     end
     
-    # List of available formats Citero exports to.
+    # List of available formats Citero exports from.
     def from_formats
-      @from_formats ||= Formats::values.select {|format| format.isSourceFormat }.collect {|format| format.name.downcase}
+      @from_formats ||= Citero.from_formats
     end
   end
 end
