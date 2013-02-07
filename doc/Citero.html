@@ -70,7 +70,11 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
+          <li><a href="#method-c-from_formats">::from_formats</a></li>
+          
           <li><a href="#method-c-map">::map</a></li>
+          
+          <li><a href="#method-c-to_formats">::to_formats</a></li>
           
         </ul>
       </div>
@@ -152,6 +156,40 @@ data").from_format.to_format</p>
         <h3 class="section-header">Public Class Methods</h3>
 
       
+        <div id="from_formats-method" class="method-detail ">
+          <a name="method-c-from_formats"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">from_formats</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>List of available formats <a href="Citero.html">Citero</a> exports from as
+a module class method for quick checks.</p>
+            
+
+            
+            <div class="method-source-code" id="from_formats-source">
+<pre>
+<span class="ruby-comment"># File lib/citero/base.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">from_formats</span>
+  <span class="ruby-ivar">@from_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Formats</span><span class="ruby-operator">::</span><span class="ruby-identifier">values</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">isSourceFormat</span> }.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>}
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- from_formats-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- from_formats-method -->
+
+      
         <div id="map-method" class="method-detail ">
           <a name="method-c-map"></a>
 
@@ -172,7 +210,7 @@ href="Citero/Base.html">Base</a> class, with splatter operator passed in</p>
             
             <div class="method-source-code" id="map-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 8</span>
+<span class="ruby-comment"># File lib/citero/base.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">map</span> *<span class="ruby-identifier">args</span>
   <span class="ruby-constant">Base</span>.<span class="ruby-identifier">new</span> *<span class="ruby-identifier">args</span>
 <span class="ruby-keyword">end</span></pre>
@@ -184,6 +222,40 @@ href="Citero/Base.html">Base</a> class, with splatter operator passed in</p>
 
           
         </div><!-- map-method -->
+
+      
+        <div id="to_formats-method" class="method-detail ">
+          <a name="method-c-to_formats"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">to_formats</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>List of available formats <a href="Citero.html">Citero</a> exports to as a
+module class method for quick checks.</p>
+            
+
+            
+            <div class="method-source-code" id="to_formats-source">
+<pre>
+<span class="ruby-comment"># File lib/citero/base.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_formats</span>
+  <span class="ruby-ivar">@to_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Formats</span><span class="ruby-operator">::</span><span class="ruby-identifier">values</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">isDestinationFormat</span> }.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>}
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- to_formats-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- to_formats-method -->
 
       
       </div><!-- public-class-method-details -->
