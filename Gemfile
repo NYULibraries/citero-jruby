@@ -1,7 +1,4 @@
-source :rubygems
-source "http://rubygems.org"
-source :rubyforge
-source "http://gems.rubyforge.org"
-source :gemcutter
-source "http://gemcutter.org"
+source "https://rubygems.org"
+source "https://gems.rubyforge.org"
+source "https://gemcutter.org"
 gemspec
