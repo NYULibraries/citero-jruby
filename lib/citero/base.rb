@@ -1,3 +1,4 @@
+require 'citero/CSF'
 # Citero class, used in builder form as Citero.map("some data").from_format.to_format
 module Citero
   # Java is required in this module.

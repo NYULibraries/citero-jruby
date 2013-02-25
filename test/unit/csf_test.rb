@@ -20,4 +20,10 @@ class CSFTest < Test::Unit::TestCase
   def test_OPENURLinCSFOut
     assert_match( $CSF_REGEX, Citero.map($OPENURL).from_openurl.to_csf )
   end
+  
+  def test_CSF_object
+    test = Citero::CiteroStandardFormat.new("itemType: book")
+    assert test.itemType.first == "book"
+    assert test.keys.first == "itemType"
+  end
 end
