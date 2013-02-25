@@ -1,10 +1,14 @@
 module Citero
+  
+  # Java is required in this module.
   require 'java'
   require 'citero/citero.jar'
   
   class CiteroStandardFormat
+    # CSF object from Citero that is to be used
     CSF = Java::EduNyuLibraryCitero::CSF
     
+    # Initialize the CSF object with data
     def initialize data
       @csf = CSF::new(data)
     end
@@ -43,6 +47,7 @@ module Citero
     end
     private :matches?
     
+    # A list of keys that is available in this properties configuration
     def keys
       @keys ||= Array.new(@csf::config()::getKeys.collect {|key| key})
     end

@@ -4,3 +4,4 @@ rvm.env
 .project
 .rvmrc
 *.lock
+coverage/

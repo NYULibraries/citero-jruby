@@ -1,10 +1,8 @@
 require 'citero/CSF'
 # Citero class, used in builder form as Citero.map("some data").from_format.to_format
 module Citero
-  # Java is required in this module.
-  require 'java'
-  require 'citero/citero.jar'
 
+  # Import of an important java enum type
   java_import Java::EduNyuLibraryCitero::Formats
 
   # Calling the map method creates a new instance of the Base class, with splatter operator passed in
