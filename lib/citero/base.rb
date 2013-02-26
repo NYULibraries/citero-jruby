@@ -12,12 +12,12 @@ module Citero
 
   # List of available formats Citero exports to as a module class method for quick checks.
   def self.to_formats
-    @to_formats ||= Formats::values.select {|format| format.isDestinationFormat }.collect {|format| format.name.downcase}
+    @to_formats ||= Formats::values.select {|format| format::isDestinationFormat }.collect {|format| format.name.downcase}
   end
   
   # List of available formats Citero exports from as a module class method for quick checks.
   def self.from_formats
-    @from_formats ||= Formats::values.select {|format| format.isSourceFormat }.collect {|format| format.name.downcase}
+    @from_formats ||= Formats::values.select {|format| format::isSourceFormat }.collect {|format| format.name.downcase}
   end
   
   # The Base class is the true wrapper for citation
@@ -41,15 +41,13 @@ module Citero
     # return value in an instance variable.
     # Returns itself.
     def from format
-      begin
-        #Formats are enums in java, so they are all uppercase
-        @citero = @citero::from(Formats::valueOf(format.upcase))
-      #rescue any exceptions, if the error is not caught in JAR, most likely a 
-      #problem with the data
-      rescue Exception => e
-        raise TypeError, "Mismatched data for #{format}"
-      end
+      #Formats are enums in java, so they are all uppercase
+      @citero = @citero::from(Formats::valueOf(format.upcase))
       self
+    #rescue any exceptions, if the error is not caught in JAR, most likely a 
+    #problem with the data
+    rescue Exception => e
+      raise TypeError, "Mismatched data for #{format}"
     end
     private :from
     
@@ -58,16 +56,22 @@ module Citero
     # the to method in the Citero java object and returns the
     # return value as a string.
     def to format
-      begin
-        #Formats are enums in java, so they are all uppercase
-        @citero::to(Formats::valueOf(format.upcase))
-      #rescue any exceptions, if the error is not caught in JAR, most likely a 
-      #problem with the source format
-      rescue Exception => e
-        raise ArgumentError, "Missing a source format. Use from_[format] first."
-      end
+      #Formats are enums in java, so they are all uppercase
+      @citero::to(Formats::valueOf(format.upcase))
+    #rescue any exceptions, if the error is not caught in JAR, most likely a 
+    #problem with the source format
+    rescue Exception => e
+      raise ArgumentError, "Missing a source format. Use from_[format] first."
     end
     private :to
+    
+    # Returns a CSF object 
+    def csf
+      CSF::new(self.to_csf)
+    # Rescue all exceptions, but mostly likeley a problem with the source format.
+    rescue Exception => e
+      raise ArgumentError, "Missing a source format. Use from_[format] first."
+    end
     
     # The method_missing override checks to see if the called method
     # can be evaluated to a method name and parameter, then stores it
@@ -128,10 +132,12 @@ module Citero
     def to_formats
       @to_formats ||= Citero.to_formats
     end
+    private :to_formats
     
     # List of available formats Citero exports from.
     def from_formats
       @from_formats ||= Citero.from_formats
     end
+    private :from_formats
   end
 end

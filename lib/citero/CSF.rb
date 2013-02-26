@@ -4,7 +4,7 @@ module Citero
   require 'java'
   require 'citero/citero.jar'
   
-  class CiteroStandardFormat
+  class CSF
     # CSF object from Citero that is to be used
     CSF = Java::EduNyuLibraryCitero::CSF
     
