@@ -101,6 +101,12 @@
         1,
         1,
         1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
         1
       ],
       "/apps/.jenkins/jobs/citero-gem/workspace/test/unit/easybib_test.rb": [
@@ -173,6 +179,6 @@
         1
       ]
     },
-    "timestamp": 1361902311
+    "timestamp": 1361914660
   }
 }

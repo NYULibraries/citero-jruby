@@ -25,8 +25,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="test-unit-csf_test_rb.html">test/unit/csf_test.rb</a></td>
-            <td class='right_align'><tt>29</tt></td>
-            <td class='right_align'><tt>16</tt></td>
+            <td class='right_align'><tt>35</tt></td>
+            <td class='right_align'><tt>20</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
       <div class="percent_graph">
         <div class="covered" style="width:100px"></div>
@@ -120,10 +120,10 @@
           <td><pre><a name="line24">24</a>   </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line25">25</a>   def test_CSF_object</pre></td>
+          <td><pre><a name="line25">25</a>   def test_CSF_object_from_csf</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line26">26</a>     test = Citero::CiteroStandardFormat.new(&quot;itemType: book&quot;)</pre></td>
+          <td><pre><a name="line26">26</a>     test = Citero::CSF.new($CSF)</pre></td>
         </tr>
         <tr class="marked">
           <td><pre><a name="line27">27</a>     assert test.itemType.first == &quot;book&quot;</pre></td>
@@ -135,12 +135,30 @@
           <td><pre><a name="line29">29</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line30">30</a> end</pre></td>
+          <td><pre><a name="line30">30</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line31">31</a>   def test_CSF_object_from_another_format</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line32">32</a>     test = Citero.map($RIS).from_ris.csf</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line33">33</a>     assert test.itemType.first == &quot;journalArticle&quot;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line34">34</a>     assert test.keys.first == &quot;itemType&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line35">35</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line36">36</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2013-02-26 13:11:51 -0500 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2013-02-26 16:37:40 -0500 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>
