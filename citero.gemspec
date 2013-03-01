@@ -14,11 +14,11 @@ Gem::Specification.new do |s|
   
   s.files       = Dir["{app,lib,config}/**/*"] + ["Rakefile", "Gemfile", "README.md"]
   
-  s.add_dependency "rake", "~> 10.0"
+  s.add_development_dependency "rake", "~> 10.0"
   s.add_development_dependency "test-unit", "~> 2.5"
-  s.add_development_dependency"simplecov", "~> 0.7"
+  s.add_development_dependency "simplecov", "~> 0.7"
   s.add_development_dependency "simplecov-rcov", "~> 0.2"
   s.add_development_dependency "git", "~> 1.2"
   s.add_development_dependency "json", "~> 1.7"
-  s.add_dependency "bundler", "~> 1.2"
+  s.add_development_dependency "bundler", "~> 1.2"
 end
