@@ -5,6 +5,8 @@ require "citero"
 require 'simplecov'
 require 'simplecov-rcov'
 require 'json'
+require 'coveralls'
+Coveralls.wear!
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start
 

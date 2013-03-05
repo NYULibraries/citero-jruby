@@ -12,12 +12,17 @@ module Citero
 
   # List of available formats Citero exports to as a module class method for quick checks.
   def self.to_formats
-    @to_formats ||= Formats::values.select {|format| format::isDestinationFormat }.collect {|format| format.name.downcase}
+    @to_formats ||= formats :isDestinationFormat
   end
   
   # List of available formats Citero exports from as a module class method for quick checks.
   def self.from_formats
-    @from_formats ||= Formats::values.select {|format| format::isSourceFormat }.collect {|format| format.name.downcase}
+    @from_formats ||= formats :isSourceFormat
+  end
+  
+  private
+  def self.formats meth
+    Formats::values.select {|format| format.send(meth) }.collect {|format| format.name.downcase}
   end
   
   # The Base class is the true wrapper for citation
