@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "git", "~> 1.2"
   s.add_development_dependency "json", "~> 1.7"
   s.add_development_dependency "bundler", "~> 1.2"
+  s.add_development_dependency "coveralls"
 end

@@ -4,6 +4,7 @@ module Citero
   require 'java'
   require 'citero/citero.jar'
   
+  #CSF class, used to interact directly with available metadata.
   class CSF
     # CSF object from Citero that is to be used
     CSF = Java::EduNyuLibraryCitero::CSF
