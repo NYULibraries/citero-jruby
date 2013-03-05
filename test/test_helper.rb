@@ -1,12 +1,12 @@
 #!/bin/env ruby
 # encoding: utf-8
+require 'coveralls'
+Coveralls.wear!
 require "test/unit"
 require "citero"
 require 'simplecov'
 require 'simplecov-rcov'
 require 'json'
-require 'coveralls'
-Coveralls.wear!
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start
 
