@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>lib/citero/base.rb</title>
+    <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="./assets/0.2.3/rcov.js"></script>
+  </head>
+  <body>
+    <h1>Workspace C0 Coverage Information - Simploco - RCov</h1>
+    <h2>lib/citero/base.rb</h2>
+
+    <div class="report_table_wrapper">
+      <table class='report' id='report_table'>
+        <thead>
+          <tr>
+            <th class="left_align">Name</th>
+            <th class="right_align">Total Lines</th>
+            <th class="right_align">Lines of Code</th>
+            <th class="left_align">Total Coverage</th>
+            <th class="left_align">Code Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="left_align"><a href="lib-citero-base_rb.html">lib/citero/base.rb</a></td>
+            <td class='right_align'><tt>148</tt></td>
+            <td class='right_align'><tt>57</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>97.30%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:97px"></div>
+        <div class="uncovered" style="width:3px"></div>
+      </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>92.98%</tt></div>
+      <div class="percent_graph">
+        <div class="covered" style="width:93px"></div>
+        <div class="uncovered" style="width:7px"></div>
+      </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Key</h3>
+
+    <div class="key"><pre><span class='marked'>Code reported as executed by Ruby looks like this...</span><span class='marked1'>and this: this line is also marked as covered.</span><span class='inferred'>Lines considered as run by rcov, but not reported by Ruby, look like this,</span><span class='inferred1'>and this: these lines were inferred by rcov (using simple heuristics).</span><span class='uncovered'>Finally, here's a line marked as not executed.</span></pre></div>
+
+    <h3>Coverage Details</h3>
+
+    <table class="details">
+      <tbody>
+        <tr class="marked">
+          <td><pre><a name="line2">2</a> require 'citero/CSF'</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line3">3</a> # Citero class, used in builder form as Citero.map(&quot;some data&quot;).from_format.to_format</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line4">4</a> module Citero</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line5">5</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line6">6</a>   # Import of an important java enum type</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line7">7</a>   java_import Java::EduNyuLibraryCitero::Formats</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line8">8</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line9">9</a>   # Calling the map method creates a new instance of the Base class, with splatter operator passed in</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line10">10</a>   def self.map *args</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line11">11</a>     Base.new *args</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line12">12</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line13">13</a> </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line14">14</a>   # List of available formats Citero exports to as a module class method for quick checks.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line15">15</a>   def self.to_formats</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line16">16</a>     @to_formats ||= formats :isDestinationFormat</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line17">17</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line18">18</a>   </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line19">19</a>   # List of available formats Citero exports from as a module class method for quick checks.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line20">20</a>   def self.from_formats</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line21">21</a>     @from_formats ||= formats :isSourceFormat</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line22">22</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line23">23</a>   </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line24">24</a>   private</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line25">25</a>   def self.formats meth</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line26">26</a>     Formats::values.select {|format| format.send(meth) }.collect {|format| format.name.downcase}</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line27">27</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line28">28</a>   </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line29">29</a>   # The Base class is the true wrapper for citation</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line30">30</a>   class Base</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line31">31</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line32">32</a>     # Import of important java files.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line33">33</a>     JavaCitero = Java::EduNyuLibraryCitero::Citero</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line34">34</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line35">35</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line36">36</a>     # The constructor, takes input data taken from the parent module</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line37">37</a>     # and creates an instance of the Citero java object. </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line38">38</a>     # Returns itself for builder patttern.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line39">39</a>     def initialize data</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line40">40</a>       @citero = JavaCitero::map(data)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line41">41</a>       self</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line42">42</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line43">43</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line44">44</a>     # The from method is private, it takes in a format and gets</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line45">45</a>     # the appropriate Format java class and then calls</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line46">46</a>     # the from method in the Citero java object and stores its</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line47">47</a>     # return value in an instance variable.</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line48">48</a>     # Returns itself.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line49">49</a>     def from format</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line50">50</a>       #Formats are enums in java, so they are all uppercase</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line51">51</a>       @citero = @citero::from(Formats::valueOf(format.upcase))</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line52">52</a>       self</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line53">53</a>     #rescue any exceptions, if the error is not caught in JAR, most likely a </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line54">54</a>     #problem with the data</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line55">55</a>     rescue Exception =&gt; e</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line56">56</a>       raise TypeError, &quot;Mismatched data for #{format}&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line57">57</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line58">58</a>     private :from</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line59">59</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line60">60</a>     # The to method is private, it takes in a format and gets</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line61">61</a>     # the appropriate Format java class and then calls</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line62">62</a>     # the to method in the Citero java object and returns the</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line63">63</a>     # return value as a string.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line64">64</a>     def to format</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line65">65</a>       #Formats are enums in java, so they are all uppercase</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line66">66</a>       @citero::to(Formats::valueOf(format.upcase))</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line67">67</a>     #rescue any exceptions, if the error is not caught in JAR, most likely a </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line68">68</a>     #problem with the source format</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line69">69</a>     rescue Exception =&gt; e</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line70">70</a>       raise ArgumentError, &quot;Missing a source format. Use from_[format] first.&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line71">71</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line72">72</a>     private :to</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line73">73</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line74">74</a>     # Returns a CSF object </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line75">75</a>     def csf</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line76">76</a>       CSF::new(self.to_csf)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line77">77</a>     # Rescue all exceptions, but mostly likeley a problem with the source format.</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line78">78</a>     rescue Exception =&gt; e</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line79">79</a>       raise ArgumentError, &quot;Missing a source format. Use from_[format] first.&quot;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line80">80</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line81">81</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line82">82</a>     # The method_missing override checks to see if the called method</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line83">83</a>     # can be evaluated to a method name and parameter, then stores it</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line84">84</a>     # and calls it if it can.</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line85">85</a>     # For example, to_csf or from_pnx. pnx_to will not work.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line86">86</a>     def method_missing(meth, *args, &amp;block)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line87">87</a>       # Check to see if it can be evaluated</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line88">88</a>       if(matches? meth)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line89">89</a>         #Defines the method and caches it to the class</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line90">90</a>         self.class.send(:define_method, meth) do</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line91">91</a>           # Splits the method and parameter. See formatize and directionize</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line92">92</a>           send directionize(meth).to_sym, formatize(meth)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line93">93</a>         end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line94">94</a>         # calls the method</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line95">95</a>         send meth, *args, &amp;block</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line96">96</a>       else</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line97">97</a>         super</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line98">98</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line99">99</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line100">100</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line101">101</a>     # Returns true if the method can be evaluated to a method name</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line102">102</a>     # and parameter.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line103">103</a>     def respond_to? meth, include_private=false</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line104">104</a>       if(matches? meth)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line105">105</a>         return true</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line106">106</a>       else</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line107">107</a>         super</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line108">108</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line109">109</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line110">110</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line111">111</a>     # Private method. Checks to see if the method name is in the list of methods</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line112">112</a>     # that can accept the formats, and checks to see if the formats are in a list</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line113">113</a>     # of formats as defined by the Java enum Format.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line114">114</a>     def matches? meth</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line115">115</a>       directions.include? directionize(meth) and method(&quot;#{directionize(meth)}_formats&quot;).call.include? formatize(meth)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line116">116</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line117">117</a>     private :matches?</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line118">118</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line119">119</a>     # Splits the method to get its direction, or method ie to and from.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line120">120</a>     def directionize meth, delimiter=&quot;_&quot;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line121">121</a>       meth.to_s.split(delimiter, 2).first</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line122">122</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line123">123</a>     private :directionize</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line124">124</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line125">125</a>     # Splits the method to get its format, or parameter ie csf or ris.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line126">126</a>     def formatize meth, delimiter=&quot;_&quot;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line127">127</a>       meth.to_s.split(delimiter, 2).last</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line128">128</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line129">129</a>     private :formatize</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line130">130</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line131">131</a>     # List of available directions or methods.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line132">132</a>     def directions</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line133">133</a>       @directions ||= [&quot;to&quot;, &quot;from&quot;]</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line134">134</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line135">135</a>     private :directions</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line136">136</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line137">137</a>     # List of available formats Citero exports to.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line138">138</a>     def to_formats</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line139">139</a>       @to_formats ||= Citero.to_formats</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line140">140</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line141">141</a>     private :to_formats</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line142">142</a>     </pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line143">143</a>     # List of available formats Citero exports from.</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line144">144</a>     def from_formats</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line145">145</a>       @from_formats ||= Citero.from_formats</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line146">146</a>     end</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line147">147</a>     private :from_formats</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line148">148</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line149">149</a> end</pre></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Generated on 2013-03-06 15:13:10 -0500 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+
+  </body>
+</html>
