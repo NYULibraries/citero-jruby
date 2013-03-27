@@ -1,12 +1,12 @@
 #!/bin/env ruby
 # encoding: utf-8
+require 'coveralls'
+Coveralls.wear!
 require "test/unit"
 require "citero"
 require 'simplecov'
 require 'simplecov-rcov'
 require 'json'
-require 'coveralls'
-Coveralls.wear!
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start
 
@@ -20,7 +20,7 @@ $CSF_REGEX = /(^[.a-zA-Z0-9]+(\s*:\s*)[^\n]+$)+/
 $RIS_REGEX = /(^[\w\d]{1,6}  - [\w\W]*$|\s)+/
 $PNX_REGEX = /<[\w\W]*><[\w\s"]+>[\w\W]*<\/[\w\s]+>/
 $BIBTEX_REGEX = /@[^{]+{(?:[^{}]|{[^{}]*}|{{[^{}]*}})*}/
-$OPENURL_REGEX = /[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]*\?[&?[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+=[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+]+/
+$OPENURL_REGEX = /[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]*\?*[&?[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+=[:\/%$\-_\.\+!\*'\(\),a-zA-Z0-9]+]+/
 
 def is_valid_json? json
   JSON.parse(json)
