@@ -20,4 +20,12 @@ class RISTest < Test::Unit::TestCase
   def test_OPENURLinRISOut
     assert_match( $RIS_REGEX, Citero.map($OPENURL).from_openurl.to_ris )
   end
+  
+  def test_EASYBIBinRISOut
+    assert_raise( NoMethodError ){  Citero.map($EASYBIB).from_easybib.to_ris }
+  end
+  
+  def test_XerxesXMLinRISOut
+    assert_match( $RIS_REGEX, Citero.map($XERXES).from_xerxes_xml.to_ris )
+  end
 end

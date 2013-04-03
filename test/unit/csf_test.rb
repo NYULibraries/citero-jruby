@@ -21,6 +21,14 @@ class CSFTest < Test::Unit::TestCase
     assert_match( $CSF_REGEX, Citero.map($OPENURL).from_openurl.to_csf )
   end
   
+  def test_EASYBIBinCSFOut
+    assert_raise( NoMethodError ){  Citero.map($EASYBIB).from_easybib.to_csf }
+  end
+  
+  def test_XerxesXMLinXerxesXMLOut
+    assert_match( $CSF_REGEX, Citero.map($XERXES).from_xerxes_xml.to_csf )
+  end
+  
   def test_CSF_object_from_csf
     test = Citero::CSF.new($CSF)
     assert test.itemType.first == "book"

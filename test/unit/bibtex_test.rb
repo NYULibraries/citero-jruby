@@ -20,4 +20,12 @@ class BIBTEXTest < Test::Unit::TestCase
   def test_OPENURLinBIBTEXOut          
     assert_match( $BIBTEX_REGEX, Citero.map($OPENURL).from_openurl.to_bibtex )
   end
+  
+  def test_EASYBIBinBIBTEXOut
+    assert_raise( NoMethodError ){  Citero.map($EASYBIB).from_easybib.to_bibtex }
+  end
+  
+  def test_XerxesXMLinBIBTEXOut  
+    assert_match( $BIBTEX_REGEX, Citero.map($XERXES).from_xerxes_xml.to_bibtex )
+  end
 end

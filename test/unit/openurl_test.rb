@@ -20,4 +20,12 @@ class OPENURLTest < Test::Unit::TestCase
   def test_OPENURLinOPENURLOut
     assert_match( $OPENURL_REGEX, Citero.map($OPENURL).from_openurl.to_openurl )
   end
+  
+  def test_EASYBIBinOPENURLOut
+    assert_raise( NoMethodError ){  Citero.map($EASYBIB).from_easybib.to_openurl }
+  end
+  
+  def test_XerxesXMLinOPENURLOut
+    assert_match( $OPENURL_REGEX, Citero.map($XERXES).from_xerxes_xml.to_openurl )
+  end
 end
