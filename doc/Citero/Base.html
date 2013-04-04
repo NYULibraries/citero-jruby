@@ -67,13 +67,11 @@
           
           <li><a href="#method-c-new">::new</a></li>
           
-          <li><a href="#method-i-from_formats">#from_formats</a></li>
+          <li><a href="#method-i-csf">#csf</a></li>
           
           <li><a href="#method-i-method_missing">#method_missing</a></li>
           
           <li><a href="#method-i-respond_to-3F">#respond_to?</a></li>
-          
-          <li><a href="#method-i-to_formats">#to_formats</a></li>
           
         </ul>
       </div>
@@ -105,6 +103,8 @@
         
           <li><a href="../Citero/Base.html">Citero::Base</a></li>
         
+          <li><a href="../Citero/CSF.html">Citero::CSF</a></li>
+        
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
       </div>
@@ -130,6 +130,19 @@
 
       
 
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="JavaCitero">JavaCitero</a></dt>
+          
+          <dd class="description"><p>Import of important java files.</p></dd>
+          
+        
+        </dl>
+      </div>
       
 
       
@@ -161,9 +174,9 @@ Returns itself for builder patttern.</p>
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 22</span>
+<span class="ruby-comment"># File lib/citero/base.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">data</span>
-  <span class="ruby-ivar">@citero</span> = <span class="ruby-constant">Citero</span><span class="ruby-operator">::</span><span class="ruby-identifier">map</span>(<span class="ruby-identifier">data</span>)
+  <span class="ruby-ivar">@citero</span> = <span class="ruby-constant">JavaCitero</span><span class="ruby-operator">::</span><span class="ruby-identifier">map</span>(<span class="ruby-identifier">data</span>)
   <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- new-source -->
@@ -182,12 +195,12 @@ Returns itself for builder patttern.</p>
         <h3 class="section-header">Public Instance Methods</h3>
 
       
-        <div id="from_formats-method" class="method-detail ">
-          <a name="method-i-from_formats"></a>
+        <div id="csf-method" class="method-detail ">
+          <a name="method-i-csf"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">from_formats</span><span
+            <span class="method-name">csf</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -195,24 +208,27 @@ Returns itself for builder patttern.</p>
 
           <div class="method-description">
             
-            <p>List of available formats <a href="../Citero.html">Citero</a> exports to.</p>
+            <p>Returns a <a href="CSF.html">CSF</a> object</p>
             
 
             
-            <div class="method-source-code" id="from_formats-source">
+            <div class="method-source-code" id="csf-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 122</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">from_formats</span>
-  <span class="ruby-ivar">@from_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Formats</span><span class="ruby-operator">::</span><span class="ruby-identifier">values</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">isSourceFormat</span> }.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>}
+<span class="ruby-comment"># File lib/citero/base.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">csf</span>
+  <span class="ruby-constant">CSF</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_csf</span>)
+<span class="ruby-comment"># Rescue all exceptions, but mostly likeley a problem with the source format.</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&quot;Missing a source format. Use from_[format] first.&quot;</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- from_formats-source -->
+            </div><!-- csf-source -->
             
           </div>
 
           
 
           
-        </div><!-- from_formats-method -->
+        </div><!-- csf-method -->
 
       
         <div id="method_missing-method" class="method-detail ">
@@ -221,7 +237,7 @@ Returns itself for builder patttern.</p>
           
           <div class="method-heading">
             <span class="method-name">method_missing</span><span
-              class="method-args">(method, *args, &block)</span>
+              class="method-args">(meth, *args, &block)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
@@ -237,17 +253,17 @@ from_pnx. pnx_to will not work.</p>
             
             <div class="method-source-code" id="method_missing-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 65</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-comment"># File lib/citero/base.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-comment"># Check to see if it can be evaluated</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">matches?</span> <span class="ruby-identifier">method</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">matches?</span> <span class="ruby-identifier">meth</span>)
     <span class="ruby-comment">#Defines the method and caches it to the class</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:define_method</span>, <span class="ruby-identifier">method</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:define_method</span>, <span class="ruby-identifier">meth</span>) <span class="ruby-keyword">do</span>
       <span class="ruby-comment"># Splits the method and parameter. See formatize and directionize</span>
-      <span class="ruby-identifier">send</span> <span class="ruby-identifier">directionize</span>(<span class="ruby-identifier">method</span>).<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">formatize</span>(<span class="ruby-identifier">method</span>)
+      <span class="ruby-identifier">send</span> <span class="ruby-identifier">directionize</span>(<span class="ruby-identifier">meth</span>).<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">formatize</span>(<span class="ruby-identifier">meth</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-comment"># calls the method</span>
-    <span class="ruby-identifier">send</span> <span class="ruby-identifier">method</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>
+    <span class="ruby-identifier">send</span> <span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">super</span>
   <span class="ruby-keyword">end</span>
@@ -268,7 +284,7 @@ from_pnx. pnx_to will not work.</p>
           
           <div class="method-heading">
             <span class="method-name">respond_to?</span><span
-              class="method-args">(method, include_private=false)</span>
+              class="method-args">(meth, include_private=false)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
@@ -281,9 +297,9 @@ from_pnx. pnx_to will not work.</p>
             
             <div class="method-source-code" id="respond_to-3F-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 82</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">method</span>, <span class="ruby-identifier">include_private</span>=<span class="ruby-keyword">false</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">matches?</span> <span class="ruby-identifier">method</span>)
+<span class="ruby-comment"># File lib/citero/base.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">meth</span>, <span class="ruby-identifier">include_private</span>=<span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">matches?</span> <span class="ruby-identifier">meth</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">super</span>
@@ -297,39 +313,6 @@ from_pnx. pnx_to will not work.</p>
 
           
         </div><!-- respond_to-3F-method -->
-
-      
-        <div id="to_formats-method" class="method-detail ">
-          <a name="method-i-to_formats"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">to_formats</span><span
-              class="method-args">()</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            <p>List of available formats <a href="../Citero.html">Citero</a> exports to.</p>
-            
-
-            
-            <div class="method-source-code" id="to_formats-source">
-<pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 117</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_formats</span>
-  <span class="ruby-ivar">@to_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Formats</span><span class="ruby-operator">::</span><span class="ruby-identifier">values</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">isDestinationFormat</span> }.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span> <span class="ruby-identifier">format</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>}
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- to_formats-source -->
-            
-          </div>
-
-          
-
-          
-        </div><!-- to_formats-method -->
 
       
       </div><!-- public-instance-method-details -->
