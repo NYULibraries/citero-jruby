@@ -43,4 +43,8 @@ class CSFTest < Test::Unit::TestCase
     assert test.itemType.first == "journalArticle"
     assert test.keys.first == "itemType"
   end
+  
+  def test_CSF_object_without_source
+    assert_raise( ArgumentError ){ Citero.map("").csf }
+  end
 end
