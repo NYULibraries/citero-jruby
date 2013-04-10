@@ -31,8 +31,11 @@ class CSFTest < Test::Unit::TestCase
   
   def test_CSF_object_from_csf
     test = Citero::CSF.new($CSF)
+    assert test.respond_to? "itemType".to_sym
     assert test.itemType.first == "book"
     assert test.keys.first == "itemType"
+    assert !(test.respond_to? "no_method".to_sym)
+    assert_raise( NoMethodError ){ test.no_method }
   end
   
   def test_CSF_object_from_another_format
