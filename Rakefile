@@ -19,7 +19,7 @@ end
 
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.title    = 'Citero-gem'
+  rdoc.title    = 'citero-jruby'
   rdoc.options << '--line-numbers'
   rdoc.options << '--markup markdown'
   rdoc.rdoc_files.include('README.md')
