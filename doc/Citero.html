@@ -34,6 +34,15 @@
         <div class="section-body">
           <ul>
           
+            <li><a href="./lib/citero-jruby/CSF_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/citero-jruby/CSF.rb">lib/citero-jruby/CSF.rb</a></li>
+          
+            <li><a href="./lib/citero-jruby/base_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/citero-jruby/base.rb">lib/citero-jruby/base.rb</a></li>
+          
+            <li><a href="./lib/citero-jruby/version_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/citero-jruby/version.rb">lib/citero-jruby/version.rb</a></li>
+          
             <li><a href="./lib/citero/CSF_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
               class="thickbox" title="lib/citero/CSF.rb">lib/citero/CSF.rb</a></li>
           
@@ -129,6 +138,11 @@
 <p><a href="Citero.html">Citero</a> class, used in builder form as <a
 href="Citero.html#method-c-map">Citero.map</a>("some
 data").from_format.to_format</p>
+<hr style="height: 1px">
+
+<p><a href="Citero.html">Citero</a> class, used in builder form as <a
+href="Citero.html#method-c-map">Citero.map</a>("some
+data").from_format.to_format</p>
 
     </div><!-- description -->
 
@@ -183,7 +197,7 @@ a module class method for quick checks.</p>
             
             <div class="method-source-code" id="from_formats-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 19</span>
+<span class="ruby-comment"># File lib/citero-jruby/base.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">from_formats</span>
   <span class="ruby-ivar">@from_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">formats</span> <span class="ruby-value">:isSourceFormat</span>
 <span class="ruby-keyword">end</span></pre>
@@ -217,7 +231,7 @@ href="Citero/Base.html">Base</a> class, with splatter operator passed in</p>
             
             <div class="method-source-code" id="map-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 9</span>
+<span class="ruby-comment"># File lib/citero-jruby/base.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">map</span> *<span class="ruby-identifier">args</span>
   <span class="ruby-constant">Base</span>.<span class="ruby-identifier">new</span> *<span class="ruby-identifier">args</span>
 <span class="ruby-keyword">end</span></pre>
@@ -251,7 +265,7 @@ module class method for quick checks.</p>
             
             <div class="method-source-code" id="to_formats-source">
 <pre>
-<span class="ruby-comment"># File lib/citero/base.rb, line 14</span>
+<span class="ruby-comment"># File lib/citero-jruby/base.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_formats</span>
   <span class="ruby-ivar">@to_formats</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">formats</span> <span class="ruby-value">:isDestinationFormat</span>
 <span class="ruby-keyword">end</span></pre>
