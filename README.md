@@ -36,3 +36,10 @@ Note, you must call from\_ before to\_ and map before anything else.
     csf.to_openurl		# ->	rft.ulr_ver=Z39.88-2004&rft.ctx_ver=Z39.88-2004&rft.rfr_id=info:sid/libraries.nyu.edu:citero&rft_val_fmlt=info:ofi/fmt:kev:mtx:book&rft.genre=book
     csf.to_easybib		# ->	{"source":"book","book":{"title":null},"pubtype":{"main":"pubnonperiodical"},"pubnonperiodical":{},"contributors":[{}]}
     csf.to_bibtex		# ->	@book{????}
+
+Finally, this gem allows you to interact with the CSF object, you can call the _csf_ method.
+
+    rec = Citero.map("itemType: book").from_csf
+    csf = rec.csf
+    p csf.itemType # => Prints ['book']
+    p csf.keys # => Prints ['itemType']
