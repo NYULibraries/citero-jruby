@@ -4,6 +4,7 @@ require 'fileutils'
 
 begin
   require 'bundler/setup'
+  require "bundler/gem_tasks"
 rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
@@ -18,7 +19,7 @@ end
 
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'doc'
-  rdoc.title    = 'Citero-gem'
+  rdoc.title    = 'citero-jruby'
   rdoc.options << '--line-numbers'
   rdoc.options << '--markup markdown'
   rdoc.rdoc_files.include('README.md')

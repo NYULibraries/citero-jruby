@@ -21,15 +21,30 @@ class CSFTest < Test::Unit::TestCase
     assert_match( $CSF_REGEX, Citero.map($OPENURL).from_openurl.to_csf )
   end
   
+  def test_EASYBIBinCSFOut
+    assert_raise( NoMethodError ){  Citero.map($EASYBIB).from_easybib.to_csf }
+  end
+  
+  def test_XerxesXMLinXerxesXMLOut
+    assert_match( $CSF_REGEX, Citero.map($XERXES).from_xerxes_xml.to_csf )
+  end
+  
   def test_CSF_object_from_csf
     test = Citero::CSF.new($CSF)
+    assert test.respond_to? "itemType".to_sym
     assert test.itemType.first == "book"
     assert test.keys.first == "itemType"
+    assert !(test.respond_to? "no_method".to_sym)
+    assert_raise( NoMethodError ){ test.no_method }
   end
   
   def test_CSF_object_from_another_format
     test = Citero.map($RIS).from_ris.csf
     assert test.itemType.first == "journalArticle"
     assert test.keys.first == "itemType"
+  end
+  
+  def test_CSF_object_without_source
+    assert_raise( ArgumentError ){ Citero.map("").csf }
   end
 end

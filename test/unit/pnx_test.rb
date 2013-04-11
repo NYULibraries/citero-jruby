@@ -20,4 +20,12 @@ class PNXTest < Test::Unit::TestCase
   def test_OPENURLinPNXOut
     assert_raise( NoMethodError ){  Citero.map($OPENURL).from_openurl.to_pnx }
   end
+  
+  def test_EASYBIBinPNXOut
+    assert_raise( NoMethodError ){  Citero.map($EASYBIB).from_easybib.to_pnx }
+  end
+  
+  def test_XerxesXMLinPNXOut
+    assert_raise( NoMethodError ){  Citero.map($XERXES).from_xerxes_xml.to_pnx }
+  end
 end
