@@ -3,7 +3,7 @@
 require 'coveralls'
 Coveralls.wear!
 require "test/unit"
-require "citero"
+require "citero-jruby"
 require 'simplecov'
 require 'simplecov-rcov'
 require 'json'
