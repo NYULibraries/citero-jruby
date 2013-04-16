@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.description = "Leverages a Maven and a custom JAR and wraps it with JRuby"
   s.authors     = ["hab278"]
   s.email       = 'hab278@nyu.edu'
+  s.homepage    = "https://github.com/NYULibraries/citero-jruby"
   
   s.files       = Dir["{app,lib,config}/**/*"] + ["Rakefile", "Gemfile", "README.md"]
   
