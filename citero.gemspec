@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = 'citero-jruby'
   s.version     = Citero::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.date        = '2013-04-11'
+  s.date        = '2013-04-23'
   s.summary     = "Tool to translate between bibliographic formats."
   s.description = "Leverages a Maven and a custom JAR and wraps it with JRuby"
   s.authors     = ["hab278"]
