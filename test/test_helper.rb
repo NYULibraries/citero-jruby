@@ -1,14 +1,17 @@
 #!/bin/env ruby
 # encoding: utf-8
-require 'coveralls'
-Coveralls.wear!
+unless ENV['TRAVIS']
+  require 'simplecov'
+  require 'simplecov-rcov'
+  SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+  SimpleCov.start
+else
+  require 'coveralls'
+  Coveralls.wear!
+end
 require "test/unit"
 require "citero-jruby"
-require 'simplecov'
-require 'simplecov-rcov'
 require 'json'
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-SimpleCov.start
 
 $CSF = "itemType: book\nauthor: Alexander Dumas\ncontributor: D'Artagnan\ntitle: The Three Musketeers"
 $RIS = "TY  -  JOUR\nAU  -  Shannon,Claude E.\nER  -\n\n"
