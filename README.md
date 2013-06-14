@@ -1,6 +1,6 @@
 citero-jruby
 ======================
-[![Build Status](http://jenkins1.bobst.nyu.edu/view/Citation/job/citero-jruby/badge/icon)](http://jenkins1.bobst.nyu.edu/view/Citation/job/citero-jruby/)
+[![Build Status](http://jenkins1.bobst.nyu.edu/buildStatus/icon?job=citero-jruby)](http://jenkins1.bobst.nyu.edu/view/Citero/job/citero-jruby/)
 [![Build Status](https://secure.travis-ci.org/NYULibraries/citero-jruby.png?branch=master)](http://travis-ci.org/NYULibraries/citero-jruby)
 [![Dependency Status](https://gemnasium.com/NYULibraries/citero-jruby.png)](https://gemnasium.com/NYULibraries/citero-jruby)
 [![Code Climate](https://codeclimate.com/github/NYULibraries/citero-jruby.png)](https://codeclimate.com/github/NYULibraries/citero-jruby)
