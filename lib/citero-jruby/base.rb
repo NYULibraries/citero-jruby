@@ -4,6 +4,7 @@ module Citero
 
   # Import of an important java enum type
   java_import Java::EduNyuLibraryCitero::Formats
+  java_import Java::EduNyuLibraryCitero::CitationStyles
 
   # Calling the map method creates a new instance of the Base class, with splatter operator passed in
   def self.map *args
@@ -18,6 +19,10 @@ module Citero
   # List of available formats Citero exports from as a module class method for quick checks.
   def self.from_formats
     @from_formats ||= formats :isSourceFormat
+  end
+  
+  def self.citation_styles
+    @citation_styles ||= CitationStyles::values.collect {|style| style.name.downcase}
   end
   
   private
