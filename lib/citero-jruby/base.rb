@@ -68,7 +68,11 @@ module Citero
     # return value as a string.
     def to format
       #Formats are enums in java, so they are all uppercase
-      @citero::to(Formats::valueOf(format.upcase))
+      if to_formats.include? format
+        @citero::to(Formats::valueOf(format.upcase))
+      else
+        @citero::to(CitationStyles::valueOf(format.upcase))
+      end
     #rescue any exceptions, if the error is not caught in JAR, most likely a 
     #problem with the source format
     rescue Exception => e
