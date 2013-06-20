@@ -36,6 +36,6 @@ class CiteroTest < Test::Unit::TestCase
   
   def test_if_doesnt_respond
     assert !Citero.map("").respond_to?("to_pnx".to_sym)
-    assert !Citero.map("").respond_to?("from_easybib}".to_sym)
+    assert !Citero.map("").respond_to?("from_easybib".to_sym)
   end
 end

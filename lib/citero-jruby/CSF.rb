@@ -1,3 +1,4 @@
+require 'citero-jruby/core_ext'
 module Citero
   
   # Java is required in this module.
@@ -23,7 +24,7 @@ module Citero
         #Defines the method and caches it to the class
         self.class.send(:define_method, meth) do
           # Splits the method and parameter. See formatize and directionize
-          @csf::config()::getStringArray(meth.to_s).to_a
+          @csf::config()::getStringArray(meth.to_s.to_java_name).to_a
         end
         # calls the method
         send meth, *args, &block
@@ -44,13 +45,13 @@ module Citero
     # Private method. Checks to see if the method name is a valid key
     # for the configuration file.
     def matches? meth
-      @csf::config()::containsKey(meth.to_s)
+      @csf::config()::containsKey(meth.to_s.to_java_name)
     end
     private :matches?
     
     # A list of keys that is available in this properties configuration
     def keys
-      @keys ||= Array.new(@csf::config()::getKeys.collect {|key| key})
+      @keys ||= Array.new(@csf::config()::getKeys.collect {|key| key.to_ruby_name})
     end
   end
 end
